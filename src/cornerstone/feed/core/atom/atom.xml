@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet href="atom.css" type="text/css"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+	xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">
+	<div xmlns="http://www.w3.org/1999/xhtml">
+		<a href="#">
+			<img title="Validate my Atom feed" width="88" height="31"
+				src="http://www.atomenabled.org/feedvalidator/images/valid-atom.png"
+				alt="[Valid Atom]" border="0px" />
+		</a>
+		<p>
+			This is an Atom formatted XML site feed. It is intended to
+			be viewed in a Newsreader or syndicated to another site.
+			Please visit
+			<a href="http://www.atomenabled.org/">Atom Enabled</a>
+			for more info.
+		</p>
+	</div>
+</feed>

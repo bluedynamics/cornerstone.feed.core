@@ -1,0 +1,33 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="cornerstone.feed.core">
+
+  <utility name="atom.xml"
+           factory=".atom.FeedSkelFactory" />  
+           
+  <utility factory=".atom.EntrySkelFactory" />  
+
+  <adapter for="cornerstone.feed.core.interfaces.IFeed
+                .interfaces.IAtomFeedSkeleton"
+           factory=".modifiers.AtomFeedModifier" 
+           name="0_atombase"/>
+
+  <adapter for="cornerstone.feed.core.interfaces.IFeedEntry 
+                .interfaces.IAtomFeedEntrySkeleton"
+           factory=".modifiers.AtomFeedEntryModifier" 
+           name="0_atombase_entry" />
+
+  <adapter factory=".mimetype.atomMimeTypeLookup" />
+
+  <utility factory=".atom.AtomNamespacePrefix" 
+  		   provides="cornerstone.feed.core.interfaces.INamespacePrefix"
+  		   name="http://www.w3.org/2005/Atom"/>   
+	           
+  <utility factory=".atom.XMLNamespacePrefix" 
+  		   provides="cornerstone.feed.core.interfaces.INamespacePrefix"
+  		   name="http://www.w3.org/XML/1998/namespace"/>   
+
+  <utility factory=".atom.XHTMLNamespacePrefix" 
+  		   provides="cornerstone.feed.core.interfaces.INamespacePrefix"
+  		   name="http://www.w3.org/1999/xhtml"/>   
+	                      
+</configure>

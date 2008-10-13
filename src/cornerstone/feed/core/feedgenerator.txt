@@ -1,0 +1,11 @@
+
+	>>> from cornerstone.feed.core.feedgenerator import FeedGenerator
+	>>> feed = makeFeedDummy()
+	>>> generator = FeedGenerator(feed, name="atom.xml")
+	>>> generator
+	<cornerstone.feed.core.feedgenerator.FeedGenerator object at ...>
+	
+	>>> generator()
+	('<?xml version="1.0" encoding="utf-8"?>\n<feed xml:base="http://localhost/" ...title>Entry #0</title><updated>...localhost/++feed++/atom.xml" rel="alternate" /></feed>', 'application/atom+xml')
+
+	

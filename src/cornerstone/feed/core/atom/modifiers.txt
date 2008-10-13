@@ -1,0 +1,37 @@
+
+get skeleton
+
+	>>> from zope.component import queryUtility
+	>>> from zope.component import queryMultiAdapter
+	>>> from cornerstone.feed.core.interfaces import IFeedSkeletonProducer
+	>>> from cornerstone.feed.core.interfaces import IFeedSkeleton
+	>>> feedskelfactory = queryUtility(IFeedSkeletonProducer, name='atom.xml')
+	>>> tree = feedskelfactory()
+	>>> IFeedSkeleton.providedBy(tree)
+	True
+	
+	>>> tree.getroot()
+	<Element {http://www.w3.org/2005/Atom}feed at ...>
+
+and get a dummy feed
+	>>> feed = makeFeedDummy()
+	>>> from cornerstone.feed.core.interfaces import IFeed
+	>>> IFeed.providedBy(feed)
+	True
+	
+modify it!
+	>>> from cornerstone.feed.core.interfaces import IFeedModifier
+	>>> feedmodifier = queryMultiAdapter((feed, tree), IFeedModifier, 
+	...                                  name="0_atombase")
+	>>> feedmodifier
+	<cornerstone.feed.core.atom.modifiers.AtomFeedModifier object at ...>
+	
+	>>> feedmodifier.modify()	
+	>>> tree
+	<elementtree.ElementTree.ElementTree instance at ...>
+	
+	>>> from elementtreewriter.xmlwriter import XMLWriter
+	>>> writer = XMLWriter(tree)
+	>>> xml = writer()
+	>>> len(xml) > 1
+	True
