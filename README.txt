@@ -24,7 +24,7 @@ Credits
 - Written by: `Jens Klein <mailto:jens@bluedynamics.com>`_
   BlueDynamics Alliance, Klein & Partner KEG, Austria
   
-- The feed-interfaces are based on Products.basesyndication.
+- The feed-interfaces ideas are based on Products.basesyndication.
   thanks to Tim Hicks and contributors!
 
 - Robert Niederreiter for Bugfixes, Code Cleanup
