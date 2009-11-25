@@ -13,6 +13,6 @@ def iso8601(dt):
         return DateTime.ISO8601(dt)
     if isinstance(dt, datetime):
         return dt.isoformat()
-    if isinstance(dt, str):
+    if isinstance(dt, basestring):
         return dt
     raise ValueError, "need some date/time or a string here"
