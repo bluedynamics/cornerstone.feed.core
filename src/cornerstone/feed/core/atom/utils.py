@@ -6,6 +6,7 @@ try:
     from celementtree.ElementTree import Element
 except ImportError:
     from elementtree.ElementTree import Element
+from elementtree.ElementTree import fromstring
 from cornerstone.feed.core.utils import iso8601
 
 xhtmlns = 'http://www.w3.org/1999/xhtml'
@@ -21,9 +22,10 @@ def applyAtomText(node, text):
         assert type in ('text', 'html', 'xhtml')
         node.attrib['type'] = type
         if type == 'xhtml':
-            div = Element("{%s}div" % xhtmlns)
-            div.text = text['text'] # TODO: Do we need to add parsed nodes?
-            node.append(div)
+            body = '<div xmlns="http://www.w3.org/1999/xhtml">%s</div>'
+            body = body % text['text']
+            body = fromstring(body.encode('utf-8'))
+            node.append(body)
         else:
             node.text = cgi.escape(text['text'])                
     else:
