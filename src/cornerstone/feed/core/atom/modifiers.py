@@ -177,14 +177,14 @@ class AtomFeedEntryModifier(AtomModifierBase):
         
     def modify(self):
         # self.node is an atom entry, see RFC4248 Section 4.1.2
-
+        
         ########################################
         # content elements RFC4248 Section 4.1.3
         contents = self.entry.contents
         if not (isinstance(contents, list) or isinstance(contents, tuple)):
             contents = [contents]
         for content in contents:
-            el = Element(self.namespace+"content")            
+            el = Element(self.namespace+"content")
             # see RFC4248 Section 4.1.3.1 to 4.1.3.3
             if content.get('body', None):         
                 type = content.get('type', 'text')       
@@ -211,8 +211,8 @@ class AtomFeedEntryModifier(AtomModifierBase):
                 el.attrib['type'] = type
                 el.attrib['src'] = content.get('src')
             self.node.append(el)
-
-        ######################################
+        
+        #######################################
         # metadata elements RFC4248 Section 4.2
         self.modifyMetadata(self.entry, self.node)
 
@@ -220,5 +220,14 @@ class AtomFeedEntryModifier(AtomModifierBase):
         if self.entry.webURL:
             self.node.append(createLink(self.entry.webURL, 'alternate'))
         
-        # TODO: handle enclosures
+        # handle enclosures RFC4248 Section 4.2.7.2. The "rel" Attribute
+        if self.entry.enclosures:
+            for enclosure in self.entry.enclosures:
+                el = Element(self.namespace+"link")
+                el.attrib['rel'] = 'enclosure'
+                el.attrib['type'] = enclosure.mimetype
+                el.attrib['length'] = str(len(enclosure))
+                el.attrib['href'] = enclosure.url
+                self.node.append(el)
+        
         return [self.namespace, xhtmlns]        
