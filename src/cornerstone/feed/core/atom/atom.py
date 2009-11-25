@@ -1,17 +1,5 @@
-#
-# Copyright 2008, BlueDynamics Alliance, Austria - http://bluedynamics.com
-#
+# Copyright 2008-2009, BlueDynamics Alliance - http://bluedynamics.com
 # Zope Public License (ZPL)
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL). A copy of the ZPL should accompany this distribution.
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE.
-#
-__author__ = """Jens Klein <jens@bluedynamics.com>"""
-__docformat__ = 'plain'
 
 import os    
 from zope.interface import implementer
@@ -22,6 +10,7 @@ from interfaces import IAtomFeedSkeleton
 from interfaces import IAtomFeedEntrySkeleton
 from interfaces import IAtomFeedEntrySkeletonProducer
 from elementtree.ElementTree import parse
+
 try:
     from cElementTree import Element as cElement    
     class Element(cElement):
@@ -29,7 +18,6 @@ try:
 except:
     from elementtree.ElementTree import Element
     
-
 def AtomNamespacePrefix():
     return ''
 
@@ -58,4 +46,3 @@ class EntrySkelFactory(object):
         el.tail = '\n'
         alsoProvides(el, IAtomFeedEntrySkeleton)
         return el
-    

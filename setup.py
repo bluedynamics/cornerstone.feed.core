@@ -1,9 +1,8 @@
 from setuptools import setup, find_packages
 from xml.dom.minidom import parse, parseString
 
-
-version = '1.0'
-shortdesc = "basic feed/syndication features"
+version = '1.1'
+shortdesc = "Basic feed/syndication features."
 readme = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
 
 setup(name='cornerstone.feed.core',
@@ -12,12 +11,12 @@ setup(name='cornerstone.feed.core',
       long_description=readme,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-        "Framework :: Plone",
-        "Framework :: Zope2",
-        "Framework :: Zope3",
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        ],
+          "Framework :: Plone",
+          "Framework :: Zope2",
+          "Framework :: Zope3",
+          "Programming Language :: Python",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+      ],
       keywords='web zope plone atom syndication rdf rss itunes feed',
       author='BlueDynamics Alliance',
       author_email='dev@bluedynamics.com',
@@ -30,11 +29,9 @@ setup(name='cornerstone.feed.core',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
           'elementtree',
           'elementtreewriter',         
-          #'zope.component',
-          #'zope.interface', 
+          'zope.component',
       ],
       entry_points="""
       # -*- Entry points: -*-

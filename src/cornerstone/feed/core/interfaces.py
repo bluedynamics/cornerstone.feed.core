@@ -1,25 +1,8 @@
-#
-# Copyright 2008, BlueDynamics Alliance, Austria - http://bluedynamics.com
-#
+# Copyright 2008-2009, BlueDynamics Alliance - http://bluedynamics.com
 # Zope Public License (ZPL)
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL). A copy of the ZPL should accompany this distribution.
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE.
-#
-# This definition was initially taken from Products.basesyndication. Thanks to
-# Tim Hicks and all contributors for the ideas. Finally theres not much left
-# from the original code
-
-__author__ = """Jens Klein <jens@bluedynamics.com>"""
-__docformat__ = 'plain'
 
 from zope.interface import Interface
 from zope.interface import Attribute
-
 
 class IFeedEntry(Interface):
     """A single syndication feed entry.
@@ -38,7 +21,7 @@ class IFeedEntry(Interface):
     enclosures = Attribute("One or more IEnclosure instances or None.")
 
 class IFeed(Interface):
-    """A syndication feed aggregating one or more IFeedEntryFactory
+    """A syndication feed aggregating one or more IFeedEntryFactory.
     """
     uid = Attribute("Unique ID for this feed.")
     feedURL = Attribute("Direct URL to the feed.")
@@ -59,7 +42,7 @@ class IFeed(Interface):
     factories = Attribute("Sequence of IFeedEntryFactories objects.")
 
     def getFeedEntries(limit=True):
-        """sorted sequence of IFeedEntry objects to build a feed with.
+        """Sorted sequence of IFeedEntry objects to build a feed with.
 
         Sorting based on publication datetime, newest first.
         
@@ -72,14 +55,14 @@ class IEnclosure(Interface):
 
     This is here to support podcasting.
     """
-
     url = Attribute("URL of the enclosed file.")
     major = Attribute("major mime-type of the enclosed file.")
     minor = Attribute("minor mime-type of the enclosed file.")
     mimetype = Attribute("full mime-type of the enclosed file.")
 
     def __len__():
-       """size/length of the enclosed file in bytes."""       
+       """Size/length of the enclosed file in bytes.
+       """       
 
 class IFeedEntryFactory(Interface):
     """A single source of IFeedEntry objects for a feed.
@@ -92,40 +75,48 @@ class IFeedEntryFactory(Interface):
 ################################################################################
 
 class IFeedSkeleton(Interface):
-    """marker for elementree."""
+    """Marker for elementree.
+    """
 
 class IFeedEntrySkeleton(Interface):
-    """marker for elementree node"""
+    """Marker for elementree node.
+    """
 
 class IFeedSkeletonProducer(Interface):
-    """Factory for a feed skeleton (ElementTree)"""
+    """Factory for a feed skeleton (ElementTree).
+    """
 
 class IFeedEntrySkeletonProducer(Interface):
-    """Factory for a feed entry skeleton (ElementTree)"""
-    
-        
+    """Factory for a feed entry skeleton (ElementTree).
+    """
+
 class IFeedEntryModifier(Interface):
-    """Modifies the feed entry node."""
+    """Modifies the feed entry node.
+    """
     
     def modify():
-        """does the modification."""      
-        
+        """Does the modification.
+        """       
 
 class IFeedModifier(Interface):
     """Modifies the feed tree. Fetches and calls."""
     
     def modify():
-        """does the modification."""
+        """Does the modification.
+        """
         
 class IFeedEntryModifier(Interface):
-    """Modifies the feed entry node."""
+    """Modifies the feed entry node.
+    """
     
     def modify():
-        """does the modification."""      
+        """Does the modification.
+        """      
         
 class IMimeTypeLookup(Interface):
-    """return a mimetype as string."""
+    """Return a mimetype as string.
+    """
     
 class INamespacePrefix(Interface):
-    """return a string as prefix for the namespace."""
-        
+    """Return a string as prefix for the namespace.
+    """

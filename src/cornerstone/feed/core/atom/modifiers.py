@@ -1,17 +1,5 @@
-#
-# Copyright 2008, BlueDynamics Alliance, Austria - http://bluedynamics.com
-#
+# Copyright 2008-2009, BlueDynamics Alliance - http://bluedynamics.com
 # Zope Public License (ZPL)
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL). A copy of the ZPL should accompany this distribution.
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE.
-#
-__author__ = """Jens Klein <jens@bluedynamics.com>"""
-__docformat__ = 'plain'
 
 import operator
 import cgi
@@ -27,6 +15,7 @@ from utils import applyAtomPerson
 from utils import applyAtomDate
 from utils import createLink
 from utils import xhtmlns
+
 try:
     from cElementTree import Element as cElement    
     class Element(cElement):
@@ -106,9 +95,8 @@ class AtomModifierBase(object):
         
         # updated element RFC4248 Section 4.2.15
         el = Element(self.namespace+'updated')
-        applyAtomDate(el, obj.modifiedDate)        
+        applyAtomDate(el, obj.modifiedDate)      
         node.append(el)
-
 
 class AtomFeedModifier(AtomModifierBase):
     implements(IFeedModifier)
@@ -233,5 +221,4 @@ class AtomFeedEntryModifier(AtomModifierBase):
             self.node.append(createLink(self.entry.webURL, 'alternate'))
         
         # TODO: handle enclosures
-        return [self.namespace, xhtmlns]
-                
+        return [self.namespace, xhtmlns]        

@@ -1,3 +1,6 @@
+# Copyright 2008-2009, BlueDynamics Alliance - http://bluedynamics.com
+# Zope Public License (ZPL)
+
 from datetime import datetime
 from zope.interface import implements
 from cornerstone.feed.core.interfaces import IFeed

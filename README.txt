@@ -15,9 +15,8 @@ XXX TODO
 Copyright
 =========
 
-Copyright 2008, BlueDynamics Alliance, Austria - 
+Copyright 2008-2009, BlueDynamics Alliance, Austria - 
 `www.bluedynamics.com <http://bluedynamics.com>`_
-
 
 Credits
 =======
@@ -27,9 +26,11 @@ Credits
   
 - The feed-interfaces are based on Products.basesyndication.
   thanks to Tim Hicks and contributors!
- 
+
+- Robert Niederreiter for Bugfixes, Code Cleanup
+  BlueDynamics Alliance, Squarewave Computing, Austria
 
 Licence
 =======
 
-- GNU General Public Licence 2.0 or later
+- Zope Public License (ZPL)

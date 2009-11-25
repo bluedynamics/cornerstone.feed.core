@@ -1,10 +1,5 @@
-#
-# Copyright 2008, BlueDynamics Alliance, Austria - http://bluedynamics.com
-#
-# GNU General Public Licence Version 2 or later - see LICENCE.GPL
-
-__author__ = """Jens Klein <jens@bluedynamics.com>"""
-__docformat__ = 'plaintext'
+# Copyright 2008-2009, BlueDynamics Alliance - http://bluedynamics.com
+# GNU General Public Licence Version 2 or later
 
 import code
 import sys

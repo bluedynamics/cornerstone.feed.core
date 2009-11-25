@@ -1,10 +1,5 @@
-#
-# Copyright 2008, BlueDynamics Alliance, Austria - http://bluedynamics.com
-#
-# GNU General Public Licence Version 2 or later - see LICENCE.GPL
-
-__author__ = """Jens Klein <jens@bluedynamics.com>"""
-__docformat__ = 'plain'
+# Copyright 2008-2009, BlueDynamics Alliance - http://bluedynamics.com
+# Zope Public License (ZPL)
 
 import cgi
 try:
@@ -16,7 +11,8 @@ from cornerstone.feed.core.utils import iso8601
 xhtmlns = 'http://www.w3.org/1999/xhtml'
 
 def applyAtomText(node, text):
-    """Text according to RFC4248 Section 3.1"""
+    """Text according to RFC4248 Section 3.1.
+    """
     if isinstance(text, str):
         node.text = cgi.escape(text)
     elif isinstance(text, dict):
@@ -33,17 +29,14 @@ def applyAtomText(node, text):
     else:
         raise ValueError, "text must be string or dict."
 
-    
 def applyAtomPerson(node, person):
     if isinstance(person, str):
         node.text = cgi.escape(person)
     elif isinstance(info, dict):
         raise NotImplementedError, 'TODO: support it.'
 
-
 def applyAtomDate(node, dt):
     node.text = iso8601(dt)
-        
     
 def createLink(link, rel=None):
     node = Element('{http://www.w3.org/2005/Atom}link')
