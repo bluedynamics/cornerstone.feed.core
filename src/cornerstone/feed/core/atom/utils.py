@@ -29,8 +29,9 @@ def applyAtomText(node, text):
                 body = fromstring(body.encode('utf-8'))
             except Exception, e:
                 print body
-                body = fromstring(
-                            '<p>Invalid XHTML Content. Could not render.</p>')
+                body = '<div xmlns="http://www.w3.org/1999/xhtml">%s</div>'
+                body = body % 'Invalid XHTML Content. Could not render.'
+                body = fromstring(body)
             node.append(body)
         else:
             node.text = cgi.escape(text['text'])                
