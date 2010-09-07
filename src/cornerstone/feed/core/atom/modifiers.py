@@ -58,7 +58,7 @@ class AtomModifierBase(object):
         
         # id element RFC4248 Section 4.2.6
         el = Element(self.namespace+'id')
-        el.text = obj.uid
+        el.text = 'UUID://%s' % obj.uid
         node.append(el)
 
         # link elements RFC4248 Section 4.2.7 
