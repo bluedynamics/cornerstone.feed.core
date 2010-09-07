@@ -39,7 +39,9 @@ def applyAtomText(node, text):
 
 def applyAtomPerson(node, person):
     if isinstance(person, str):
-        node.text = cgi.escape(person)
+        name = Element('{http://www.w3.org/2005/Atom}name')
+        name.text = cgi.escape(person)
+        node.append(name)
     elif isinstance(info, dict):
         raise NotImplementedError, 'TODO: support it.'
 
