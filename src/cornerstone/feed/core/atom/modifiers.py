@@ -118,6 +118,10 @@ class AtomFeedModifier(AtomModifierBase):
         root = self.tree.getroot()
         root.attrib['{%s}base' % xmlns] = self.feed.baseURL
 
+        #############################################
+        # let metadata appear before all feedentries.
+        self.modifyMetadata(self.feed, root)    
+
         #####################################
         # entry element RFC4248 Section 4.1.2
         producer = getUtility(IAtomFeedEntrySkeletonProducer)
@@ -131,7 +135,6 @@ class AtomFeedModifier(AtomModifierBase):
                 ns = modifier.modify()
                 namespaces.update(ns)
             root.append(node)
-        self.modifyMetadata(self.feed, root)    
 
         #########################################
         # generator element RFC4248 Section 4.2.4
