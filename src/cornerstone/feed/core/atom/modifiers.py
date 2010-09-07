@@ -121,21 +121,7 @@ class AtomFeedModifier(AtomModifierBase):
         #############################################
         # let metadata appear before all feedentries.
         self.modifyMetadata(self.feed, root)    
-
-        #####################################
-        # entry element RFC4248 Section 4.1.2
-        producer = getUtility(IAtomFeedEntrySkeletonProducer)
-        namespaces = Set([self.namespace, xmlns])
-        for entry in self.feed.getFeedEntries():
-            node = producer()
-            named_modifiers = list(getAdapters((entry, node), 
-                                               IFeedEntryModifier))
-            named_modifiers.sort(key=operator.itemgetter(0))
-            for name, modifier in named_modifiers:
-                ns = modifier.modify()
-                namespaces.update(ns)
-            root.append(node)
-
+        
         #########################################
         # generator element RFC4248 Section 4.2.4
         gen = self.feed.generator
@@ -166,7 +152,23 @@ class AtomFeedModifier(AtomModifierBase):
         if self.feed.imageURL:
             el = Element(self.namespace+'logo')
             el.text = self.feed.imageURL
-            root.append(el) 
+            root.append(el)         
+
+        #####################################
+        # entry element RFC4248 Section 4.1.2
+        producer = getUtility(IAtomFeedEntrySkeletonProducer)
+        namespaces = Set([self.namespace, xmlns])
+        for entry in self.feed.getFeedEntries():
+            node = producer()
+            named_modifiers = list(getAdapters((entry, node), 
+                                               IFeedEntryModifier))
+            named_modifiers.sort(key=operator.itemgetter(0))
+            for name, modifier in named_modifiers:
+                ns = modifier.modify()
+                namespaces.update(ns)
+            root.append(node)
+
+
         return namespaces
     
 class AtomFeedEntryModifier(AtomModifierBase):
