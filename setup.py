@@ -1,7 +1,8 @@
 from setuptools import setup, find_packages
 from xml.dom.minidom import parse, parseString
+import os
 
-version = '1.0'
+version = '1.0.1'
 shortdesc = "Basic feed/syndication features."
 readme = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
 
