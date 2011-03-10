@@ -22,9 +22,11 @@
   		   provides="cornerstone.feed.core.interfaces.INamespacePrefix"
   		   name="http://www.w3.org/2005/Atom"/>   
 	           
+  <!--
   <utility factory=".atom.XMLNamespacePrefix" 
   		   provides="cornerstone.feed.core.interfaces.INamespacePrefix"
   		   name="http://www.w3.org/XML/1998/namespace"/>   
+  -->
 
   <utility factory=".atom.XHTMLNamespacePrefix" 
   		   provides="cornerstone.feed.core.interfaces.INamespacePrefix"
